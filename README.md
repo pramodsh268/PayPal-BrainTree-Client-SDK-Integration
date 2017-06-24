@@ -1,8 +1,7 @@
 # PayPal-BrainTree-Client-SDK-Integration
-The project allows express checkout integration using BrainTree Client SDK. There are 2 steps to authorize the payment.
+The project allows express checkout integration using BrainTree Client SDK.
 
-1)Obtain Client Token from the server.\n
-2)Use the token obtained in the first step application authorizes the payment.\n
+Using the Client SDK payment can be authorized by sending order detail and Payment_method_nonce which is a string returned by PayPal once the payment is confirmed on the Paypal portal or mobile app.Your server then uses the input from client to authenticate the transaction using Braintree Server SDK.
 
 
 
