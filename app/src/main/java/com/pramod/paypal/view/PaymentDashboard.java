@@ -55,7 +55,35 @@ public class PaymentDashboard extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.pramod_paypal_payment_dashboard);
+
+
+        defineScreenElements();
+
+        generatedOrderId=MyPayPalUtils.getRandomString();
+
+
+        paymentPresentor= new PaymentPresentor();
+
+        et_orderId.setText(generatedOrderId);
+
+        Button submit_btn= (Button)findViewById(R.id.btn_submit);
+        submit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startPayment();
+            }
+        });
+
+        createProgressBar();
+
+        getToken();
+
+    }
+
+    private void defineScreenElements()
+    {
         et_amount=(EditText)findViewById(R.id.et_amt);
         et_currency=(EditText)findViewById(R.id.et_currency);
         et_orderId=(EditText)findViewById(R.id.et_order_id);
@@ -68,23 +96,6 @@ public class PaymentDashboard extends AppCompatActivity implements
         et_address_line2=(EditText)findViewById(R.id.et_address_line2);
         et_address_line1=(EditText)findViewById(R.id.et_address_line1);
         et_order_desc=(EditText)findViewById(R.id.et_order_desc);
-
-        generatedOrderId=MyPayPalUtils.getRandomString();
-
-
-        paymentPresentor= new PaymentPresentor();
-        et_orderId.setText(generatedOrderId);
-
-        Button submit_btn= (Button)findViewById(R.id.btn_submit);
-        submit_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startPayment();
-            }
-        });
-        createProgressBar();
-
-        getToken();
 
     }
 

@@ -13,11 +13,25 @@ public class PaymentDetailsActivity extends AppCompatActivity {
 
     private TextView  transactionId,debugId,sellerStatus,orderId,paymentId,payerId,payerEmail
             ,payerFirstName,payerLastName,payerStatus;
+    private Target transReponse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paypal_detail_activity);
 
+
+        defineScreenElements();
+
+        Gson comp_gson = new Gson();
+        String input=getIntent().getStringExtra("transaction_details");
+        transReponse= comp_gson.fromJson(input, Target.class);
+
+        populateScreen();
+
+
+    }
+    private void defineScreenElements()
+    {
         transactionId=(TextView)findViewById(R.id.tv_trans_id);
         debugId=(TextView)findViewById(R.id.tv_debug_id);
         sellerStatus=(TextView)findViewById(R.id.tv_seller_eligi);
@@ -28,11 +42,10 @@ public class PaymentDetailsActivity extends AppCompatActivity {
         payerFirstName=(TextView)findViewById(R.id.tv_payer_fname);
         payerLastName=(TextView)findViewById(R.id.tv_payer_sname);
         payerStatus=(TextView)findViewById(R.id.tv_status);
+    }
 
-        Gson comp_gson = new Gson();
-        String input=getIntent().getStringExtra("transaction_details");
-        Target transReponse= comp_gson.fromJson(input, Target.class);
-
+    private void populateScreen()
+    {
         if(transReponse!=null)
         {
             if(transReponse.getPaypalDetails()!=null)
@@ -83,10 +96,6 @@ public class PaymentDetailsActivity extends AppCompatActivity {
 
 
         }
-
-
-
-
     }
 
 }
