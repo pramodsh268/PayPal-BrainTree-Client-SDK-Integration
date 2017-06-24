@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MyPayPal</string>
+    <string name="title_activity_payment_details">PaymentDetailsActivity</string>
+</resources>

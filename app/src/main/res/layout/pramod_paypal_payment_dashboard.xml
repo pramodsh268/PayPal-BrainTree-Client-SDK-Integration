@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:id="@+id/iv_home"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_home"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Payment Dashboard"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+
+            />
+    </android.support.v7.widget.Toolbar>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Order Details"
+                />
+            <include android:id="@+id/log_det"
+                android:visibility="visible"
+                layout="@layout/order_details"></include>
+
+            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Shipping Details"
+            />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:text="This address overrides the addresses available in your PayPal wallet."
+                />
+            <include android:id="@+id/ship_det"
+                android:visibility="visible"
+                layout="@layout/mypaypal_shipping_details"></include>
+            <Button
+                android:layout_marginTop="30dp"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="Submit"
+                android:id="@+id/btn_submit"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:visibility="visible"
+                android:background="@drawable/primary_button_drawable"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
